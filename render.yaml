@@ -1,0 +1,4 @@
+services:
+  - type: web
+    name: java-login-app
+    env: docker
