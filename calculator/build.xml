@@ -1,0 +1,38 @@
+<project name="CalculatorApp" default="war">
+
+    <property name="src" value="src"/>
+    <property name="web" value="WebContent"/>
+    <property name="build" value="build"/>
+    <property name="lib" value="lib"/>
+
+    <target name="compile">
+        <mkdir dir="${build}/WEB-INF/classes"/>
+
+        <javac srcdir="${src}"
+               destdir="${build}/WEB-INF/classes">
+
+            <classpath>
+                <fileset dir="${lib}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+
+        <copy todir="${build}">
+            <fileset dir="${web}"/>
+        </copy>
+
+        <war destfile="CalculatorApp.war"
+             webxml="${web}/WEB-INF/web.xml">
+
+            <fileset dir="${build}"/>
+
+        </war>
+
+    </target>
+
+</project>
