@@ -1,0 +1,19 @@
+<project name="Portal" default="war">
+
+    <property name="web" value="Portal/WebContent"/>
+    <property name="build" value="portal-build"/>
+
+    <target name="war">
+        <mkdir dir="${build}"/>
+
+        <copy todir="${build}">
+            <fileset dir="${web}"/>
+        </copy>
+
+        <war destfile="ROOT.war"
+             webxml="${web}/WEB-INF/web.xml">
+            <fileset dir="${build}"/>
+        </war>
+    </target>
+
+</project>
